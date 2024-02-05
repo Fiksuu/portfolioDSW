@@ -60,9 +60,6 @@ def load_invoices_from_file(filename):
     try:
         with open(filename, 'r', encoding='utf-8') as f:
             return json.load(f)
-    except json.JSONDecodeError:
-        print(f'Plik {filename} jest niepoprawnie skonfigurowany. Sprawdź, czy jest poprawnym plikiem JSON.')
-        return []
     except Exception as e:
         print(f'Wystąpił błąd podczas wczytywania danych z pliku: {e}')
         return []

@@ -30,12 +30,9 @@ def get_exchange_rate(currency, date):
     while attempts < 10:
         try:
             response = requests.get(f'http://api.nbp.pl/api/exchangerates/rates/a/{currency}/{date}/')
-            response.raise_for_status()  
             data = json.loads(response.text)
             return data['rates'][0]['mid']
-        except (requests.HTTPError, json.JSONDecodeError) as e:
-            print(f'Błąd podczas pobierania kursu waluty: {e}')
-        except Exception as e:
+        except:
             date = datetime.datetime.strptime(date, "%Y-%m-%d")
             date -= datetime.timedelta(days=1)
             date = date.strftime("%Y-%m-%d")
@@ -59,27 +56,61 @@ def save_to_file(filename, data):
     except Exception as e:
         print(f'Wystąpił błąd podczas zapisywania do pliku: {e}')
 
+def load_invoices_from_file(filename):
+    try:
+        with open(filename, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except json.JSONDecodeError:
+        print(f'Plik {filename} jest niepoprawnie skonfigurowany. Sprawdź, czy jest poprawnym plikiem JSON.')
+        return []
+    except Exception as e:
+        print(f'Wystąpił błąd podczas wczytywania danych z pliku: {e}')
+        return []
+
 def main():
-    with open('invoices.txt', 'r') as f:
-        for line in f:
-            invoice_amount, invoice_currency, invoice_issue_date, payment_amount, payment_currency, payment_date = line.strip().split(', ')
-            
-            invoice = Invoice(float(invoice_amount), invoice_currency, invoice_issue_date)
-            invoice.add_payment(Payment(float(payment_amount), payment_currency, payment_date))
+    mode = input("Wybierz tryb (wsadowy/manualny): ")
 
-            total_payment = invoice.calculate_total_payment()
+    if mode.lower() == "wsadowy":
+        filename = input("Podaj nazwę pliku z danymi: ")
+        invoices_data = load_invoices_from_file(filename)
+    elif mode.lower() == "manualny":
+        invoices_data = [
+            {
+                "amount": float(input("Podaj kwotę faktury: ")),
+                "currency": input("Podaj walutę faktury: "),
+                "issue_date": input("Podaj datę wystawienia faktury (YYYY-MM-DD): "),
+                "payments": [
+                    {
+                        "amount": float(input("Podaj kwotę płatności: ")),
+                        "currency": input("Podaj walutę płatności: "),
+                        "payment_date": input("Podaj datę płatności (YYYY-MM-DD): ")
+                    }
+                ]
+            }
+        ]
+    else:
+        print("Nieznany tryb. Spróbuj ponownie.")
+        return
 
-            data = ''
-            for payment in invoice.payments:
-                difference = calculate_difference(invoice, payment)
-                print(f'Różnica w kursach walut dla płatności z dnia {payment.payment_date} wynosi: {difference}')
-                data += f'Różnica w kursach walut dla płatności z dnia {payment.payment_date} wynosi: {difference}\n'
+    for invoice_data in invoices_data:
+        invoice = Invoice(invoice_data["amount"], invoice_data["currency"], invoice_data["issue_date"])
 
-            data += f'Całkowita płatność w PLN wynosi: {total_payment}\n'
+        for payment_data in invoice_data["payments"]:
+            invoice.add_payment(Payment(payment_data["amount"], payment_data["currency"], payment_data["payment_date"]))
 
-            save_to_file('output.txt', data)
+        total_payment = invoice.calculate_total_payment()
 
-            print(f'Całkowita płatność w PLN wynosi: {total_payment}')
+        data = ''
+        for payment in invoice.payments:
+            difference = calculate_difference(invoice, payment)
+            print(f'Różnica w kursach walut dla płatności z dnia {payment.payment_date} wynosi: {difference}')
+            data += f'Różnica w kursach walut dla płatności z dnia {payment.payment_date} wynosi: {difference}\n'
+
+        data += f'Całkowita płatność w PLN wynosi: {total_payment}\n'
+
+        save_to_file('output.txt', data)
+
+        print(f'Całkowita płatność w PLN wynosi: {total_payment}')
 
 if __name__ == "__main__":
     main()

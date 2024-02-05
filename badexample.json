@@ -1,0 +1,36 @@
+[
+    {
+        "amount": 100.0,
+        "currency": "USD",
+        "issue_date": "2024-01-01,
+        "payments": [
+            {
+                "amount": 120.0,
+                "currency": "EUR",
+                "payment_date": "2024-01-10"
+            },
+            {
+                "amount": 80.0,
+                "currency": "GBP",
+                "payment_date": "2024-01-15"
+            }
+        ]
+    },
+    {
+        "amount": 200.0,
+        "currency": "EUR",
+        "issue_date": "2023-02-01",
+        "payments": [
+            {
+                "amount": 220.0,
+                "currency": "USD",
+                "payment_date": "2023-02-10"
+            },
+            {
+                "amount": 180.0,
+                "currency": "GBP",
+                "payment_date": "2023-02-15"
+            }
+        ]
+    }
+]
