@@ -90,10 +90,14 @@ def main():
         if delete_file.lower() == "tak":
             os.remove("output.txt")
 
-    mode = input("Wybierz tryb (wsadowy/manualny): ")
+    mode = ""
+    while mode.lower() not in ["wsadowy", "manualny"]:
+        mode = input("Wybierz tryb (wsadowy/manualny): ")
 
     if mode.lower() == "wsadowy":
-        filename = input("Podaj nazwę pliku z danymi: ")
+        filename = ""
+        while not os.path.exists(filename):
+            filename = input("Podaj nazwę pliku z danymi: ")
         invoices_data = load_invoices_from_file(filename)
     elif mode.lower() == "manualny":
         invoices_data = []
