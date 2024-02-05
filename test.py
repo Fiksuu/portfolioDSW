@@ -3,6 +3,7 @@ import datetime
 import requests
 import json
 
+# Klasa reprezentująca fakturę
 class Invoice:
     def __init__(self, amount, currency, issue_date):
         self.amount = amount
@@ -10,9 +11,11 @@ class Invoice:
         self.issue_date = issue_date
         self.payments = []
 
+    # Dodaje płatność do faktury
     def add_payment(self, payment):
         self.payments.append(payment)
 
+    # Oblicza całkowitą kwotę płatności dla faktury
     def calculate_total_payment(self):
         total_payment = 0
         for payment in self.payments:
@@ -20,12 +23,14 @@ class Invoice:
             total_payment += payment.amount / payment_rate
         return total_payment
 
+# Klasa reprezentująca płatność
 class Payment:
     def __init__(self, amount, currency, payment_date):
         self.amount = amount
         self.currency = currency
         self.payment_date = payment_date
 
+# Pobiera kurs wymiany dla danej waluty i daty
 def get_exchange_rate(currency, date):
     attempts = 0
     while attempts < 10:
@@ -41,6 +46,7 @@ def get_exchange_rate(currency, date):
     print(f"Nie udało się pobrać kursu waluty {currency} dla daty {date}.")
     return None
 
+# Oblicza różnicę między kwotą faktury a kwotą płatności
 def calculate_difference(invoice, payment):
     invoice_rate = get_exchange_rate(invoice.currency, invoice.issue_date)
     payment_rate = get_exchange_rate(payment.currency, payment.payment_date)
@@ -50,6 +56,7 @@ def calculate_difference(invoice, payment):
     else:
         return None
 
+# Zapisuje dane do pliku
 def save_to_file(filename, data):
     try:
         with open(filename, 'a', encoding='utf-8') as f:
@@ -57,6 +64,7 @@ def save_to_file(filename, data):
     except Exception as e:
         print(f'Wystąpił błąd podczas zapisywania do pliku: {e}')
 
+# Wczytuje faktury z pliku
 def load_invoices_from_file(filename):
     try:
         with open(filename, 'r', encoding='utf-8') as f:
@@ -68,6 +76,7 @@ def load_invoices_from_file(filename):
         print(f'Wystąpił błąd podczas wczytywania danych z pliku: {e}')
         return []
 
+# Waliduje datę
 def validate_date(date_text):
     try:
         datetime.datetime.strptime(date_text, '%Y-%m-%d')
@@ -75,6 +84,7 @@ def validate_date(date_text):
     except ValueError:
         return False
 
+# Waliduje kwotę
 def validate_amount(amount_text):
     try:
         amount = float(amount_text)
@@ -84,6 +94,7 @@ def validate_amount(amount_text):
     except ValueError:
         return False
 
+# Główna funkcja programu
 def main():
     if os.path.exists("output.txt"):
         delete_file = input("Plik output.txt istnieje. Czy chcesz go usunąć? (tak/nie): ")
