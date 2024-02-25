@@ -1,0 +1,98 @@
+Przedmowa
+Remiksowanie książki na otwartej licencji
+To całkiem naturalne, że naukowcy, którym ciągle się mówi „publikuj albo giń”,
+wciąż chcą tworzyć coś zupełnie od podstaw; coś, co będzie ich własnym, świeżym
+dziełem. Poniższa książka nie powstała od zera, ale zamiast tego „remiksuje”
+książkę zatytułowaną Think Python: How to Think Like a Computer Scientist1
+autorstwa Allena B. Downeya, Jeffa Elknera i innych.
+W grudniu 2009 roku na Uniwersytecie Michigan piąty semestr z rzędu przygotowywałem się do prowadzenia kursu SI502 – Networked Programming. Zdecydowałem,
+że nadszedł czas, by napisać podręcznik do Pythona, który będzie skupiał się na
+eksplorowaniu danych, a nie na rozumieniu algorytmów i pojęć abstrakcyjnych. W
+kursie SI502 moim celem jest nauczenie przydatnych przez całe życie umiejętności
+obsługi danych przy użyciu Pythona. Niewielu z moich studentów planowało zostać
+zawodowymi programistami. Zamiast tego chcieli być bibliotekarzami, menedżerami, prawnikami, biologami, ekonomistami itp., którzy w wybranej przez siebie
+dziedzinie umiejętnie wykorzystywaliby technologię.
+Nigdy nie łudziłem się, że znajdę idealną książkę o Pythonie poświęconą analizie
+danych do mojego kursu, więc postanowiłem właśnie taką napisać. Na szczęście na
+trzy tygodnie przed przerwą wakacyjną, podczas której planowałem zacząć pracę
+nad nową książkę, dr Atul Prakash podczas spotkania na wydziale pokazał mi
+książkę Think Python, której używał w tym semestrze do prowadzenia swojego
+kursu Pythona. Jest to dobrze napisany i łatwo przyswajalny tekst z dziedziny
+informatyki, oparty na krótkich, bezpośrednich wyjaśnieniach.
+Ogólna struktura tamtej książki została tutaj zmieniona, tak aby jak najszybciej
+przejść do rozwiązywania problemów związanych z analizowaniem danych oraz by
+już od samego początku mieć szereg coraz trudniejszych przykładów i ćwiczeń na
+ten temat.
+Rozdziały 2-10 są podobne do tych z książki Think Python, ale nastąpiły w nich
+poważne zmiany. Przykłady i ćwiczenia poświęcone liczbom zostały zastąpione
+ćwiczeniami dotyczącymi danych. Tematy są przedstawiane w kolejności potrzebnej
+do budowania coraz bardziej wyrafinowanych rozwiązań w zakresie analizowania
+danych. Niektóre tematy, takie jak try i except, są prezentowane jako część
+rozdziału o instrukcjach warunkowych. Funkcje są traktowane bardzo pobieżnie,
+aż do momentu gdy stają się potrzebne do obsługi bardziej złożonych programów
+(nie są wprowadzane na początku nauki jako pojęcie abstrakcyjne). Za wyjątkiem
+rozdziału 4 prawie wszystkie funkcje definiowane przez użytkownika zostały usunięte
+z przykładowego kodu i ćwiczeń. Słowo „rekurencja”2 w ogóle nie pojawia się w
+książce.
+W rozdziałach 1 oraz 11-16 cały materiał jest zupełnie nowy. Skupia się on na
+rzeczywistych zastosowaniach i prostych przykładach Pythona podczas analizowania
+danych, włączając w to wyrażenia regularne do wyszukiwania i parsowania tekstu,
+automatyzację zadań na komputerze, pobieranie danych z sieci, przeszukiwanie
+1Polskie wydanie tej książki to Myśl w języku Python! Nauka programowania.
+2Oczywiście za wyjątkiem tej linii.
+vi
+stron internetowych, programowanie obiektowe, korzystanie z usług sieciowych,
+parsowanie danych XML i JSON, tworzenie i korzystanie z baz danych przy użyciu
+SQL oraz wizualizację danych.
+Ostatecznym celem wszystkich powyższych zmian jest przejście od informatyki
+w znaczeniu nauki ścisłej (ang. Computer Science) do informatyki w znaczeniu
+dyscypliny badającej struktury, zachowania i interakcje rzeczywistych i sztucznych systemów, które przechowują, przetwarzają i przekazują informacje (ang.
+Informatics). Dodatkowym celem jest włączenie do pierwszych zajęć z technologii
+informacyjnych tych tematów, które mogą być użyteczne nawet dla osoby, która
+zdecyduje, że nie zostanie zawodowym programistą.
+Studenci, których ta książka zainteresuje i będą chcieli dalej zgłębiać poruszaną
+tematykę, powinni zajrzeć do książki Allena B. Downeya Think Python. Ponieważ
+te dwie książki w dużym stopniu nakładają się na siebie, czytelnicy szybko nabędą
+umiejętności w dodatkowych technicznych aspektach programowania i myślenia
+algorytmicznego, które zostały omówione w książce Think Python. A biorąc pod
+uwagę, że książki mają podobny styl narracji, czytelnicy powinni być w stanie przy
+minimalnym wysiłku szybko przejść przez Think Python.
+Jako osoba posiadająca prawa autorskie do Think Python, Allen udzielił mi zgody
+na zmianę licencji na materiał pozostający w tej książce z licencji GNU Free
+Documentation License na nowszą licencję Creative Commons Uznanie autorstwaNa tych samych warunkach. Jest to następstwem ogólnego przesunięcia licencji
+otwartej dokumentacji z GFDL na CC-BY-SA (np. Wikipedia). Korzystanie
+z licencji CC-BY-SA podtrzymuje silną tradycję tej książki w zakresie copyleft,
+jednocześnie jeszcze bardziej ułatwiając nowym autorom ponowne wykorzystanie
+tego materiału według ich własnego uznania.
+Uważam, że ta książka jest przykładem na to, dlaczego otwarte materiały są
+tak ważne dla przyszłości edukacji. Chcę podziękować Allenowi B. Downeyowi i
+Cambridge University Press za ich przyszłościową decyzję o udostępnieniu książki
+w ramach otwartych praw autorskich. Mam nadzieję, że są zadowoleni z owoców
+mojej pracy. Mam również nadzieję, że Ty, czytelniku, też jesteś zadowolony z
+naszych wspólnych wysiłków.
+Pragnę podziękować Allenowi B. Downeyowi i Lauren Cowles za pomoc, cierpliwość
+i wskazówki dotyczące postępowania i rozwiązywania problemów związanych z
+prawami autorskimi do tej książki.
+Charles Severance
+www.dr-chuck.com
+Ann Arbor, MI, USA
+9 września 2013 r.
+Charles Severance zajmuje stanowisko Clinical Associate Professor w School of
+Information na Uniwersytecie Michigan.
+Informacja dotycząca polskiego wydania
+Książka „Python dla wszystkich”, w odniesieniu do swojego oryginału „Python for
+Everybody”, jest nie tylko jej tłumaczeniem, ale posiada również szereg poprawek,
+rozwinięć i nowych materiałów.
+vii
+W rozdziale 7 dodano sekcję o przetwarzaniu plików zawierających polski tekst. W
+rozdziałach 9 i 10 uaktualniono informacje o sortowaniu słowników. W rozdziale
+10 dodano sekcję dotyczącą list składanych. Rozdziały 13 i 16 korzystają z usługi
+Nominatim dostarczanej przez OpenStreetMap (zamiast z płatnego GoogleAPI).
+Zaktualizowano opis korzystania z API Twittera. Indeks został poprawiony, usunięto zbędne i dodano nowe odniesienia w celu łatwiejszego wyszukiwania treści.
+W tekście dodano przypisy w celu rozjaśnienia polskiej terminologii. W kodach
+programów nie tłumaczono nazw zmiennych – jest to pewna ogólna konwencja
+programistyczna, która powinna również pomóc w sprawniejszym operowaniu pojęciami programistycznymi (może to być szczególnie przydatne podczas wyszukiwania
+w internecie treści dotyczących zadanego problemu).
+Na stronie internetowej, będącej uzupełnieniem tej książki, rozwinięto i uporządkowano sekcje dotyczące instalacji Pythona.
+Korekta polskiego tłumaczenia została sfinansowana przez Wydział Matematyki i
+Informatyki Uniwersytetu im. Adama Mickiewicza w Poznaniu.

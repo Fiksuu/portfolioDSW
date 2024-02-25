@@ -1,8 +1,7 @@
 def count_word_occurrences():
     try:
-        file_path = input('Podaj ścieżkę do pliku: ')
         word = input('Podaj słowo do wyszukania: ')
-        with open(file_path, 'r') as f:
+        with open('P2ĆW2_Błędy_i_Wyjątki/4/tekst.txt', 'r') as f:
             contents = f.read()
         occurrences = contents.count(word)
         print(f'Słowo {word} występuje {occurrences} razy w pliku.')
