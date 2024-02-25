@@ -1,0 +1,5 @@
+jan.kowalski@example.com
+anna.nowak@example.net
+piotr.zielinski@example.org
+ewa.wisniewska@example.pl
+tomasz.wojcik@example.com
